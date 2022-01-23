@@ -159,7 +159,7 @@ public class frmCashTransfer extends javax.swing.JFrame {
         // TODO add your handling code here:
         /// Button Back
 
-        frmMain.moveToMain();
+        frmMain.moveToMain(accNo);
         this.dispose();
     }//GEN-LAST:event_btn_backActionPerformed
 
@@ -211,9 +211,6 @@ public class frmCashTransfer extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(frmCashTransfer.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.err.print(inpAccNo);
-        System.err.println(clsDataTransfer.getAccNo());
-        System.out.println();
         
         inpAmount = Integer.parseInt(inp_amount.getText());
         inpAccPwd = inp_accountPwd.getText();
@@ -259,7 +256,7 @@ public class frmCashTransfer extends javax.swing.JFrame {
             Logger.getLogger(frmCashDesposit.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        frmMain.moveToMain();
+        frmMain.moveToMain(accNo);
         
     }//GEN-LAST:event_btn_transferActionPerformed
 

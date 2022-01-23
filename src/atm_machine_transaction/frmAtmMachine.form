@@ -92,11 +92,11 @@
                           <Component id="btn_cashTransfer" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jButton7" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="btn_checkBalance" min="-2" pref="160" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton5" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="btn_billPayment" min="-2" pref="160" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButton9" min="-2" pref="160" max="-2" attributes="0"/>
+                          <Component id="btn_changePwd" min="-2" pref="160" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
@@ -114,9 +114,9 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton5" alignment="3" min="-2" pref="76" max="-2" attributes="0"/>
-                      <Component id="jButton7" alignment="3" min="-2" pref="76" max="-2" attributes="0"/>
-                      <Component id="jButton9" alignment="3" min="-2" pref="76" max="-2" attributes="0"/>
+                      <Component id="btn_billPayment" alignment="3" min="-2" pref="76" max="-2" attributes="0"/>
+                      <Component id="btn_checkBalance" alignment="3" min="-2" pref="76" max="-2" attributes="0"/>
+                      <Component id="btn_changePwd" alignment="3" min="-2" pref="76" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="146" max="32767" attributes="0"/>
               </Group>
@@ -127,7 +127,7 @@
         <Component class="javax.swing.JButton" name="btn_cashWithdrawal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Hack" size="14" style="1"/>
+              <Font name="Hack" size="13" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cash Withdrawal"/>
           </Properties>
@@ -138,7 +138,7 @@
         <Component class="javax.swing.JButton" name="jButton6">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Hack" size="14" style="1"/>
+              <Font name="Hack" size="13" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cash Desposit"/>
           </Properties>
@@ -149,7 +149,7 @@
         <Component class="javax.swing.JButton" name="btn_cashTransfer">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Hack" size="14" style="1"/>
+              <Font name="Hack" size="13" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cash Transfer"/>
           </Properties>
@@ -157,35 +157,38 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cashTransferActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton7">
+        <Component class="javax.swing.JButton" name="btn_checkBalance">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Hack" size="14" style="1"/>
+              <Font name="Hack" size="13" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Check Balance"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_checkBalanceActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="btn_billPayment">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Hack" size="14" style="1"/>
+              <Font name="Hack" size="13" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Bill Payment"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_billPaymentActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton9">
+        <Component class="javax.swing.JButton" name="btn_changePwd">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Hack" size="14" style="1"/>
+              <Font name="Hack" size="13" style="1"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Change Password"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_changePwdActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -267,7 +270,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Hack" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Balance"/>
+            <Property name="text" type="java.lang.String" value="Cash"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="txt_accountNo">

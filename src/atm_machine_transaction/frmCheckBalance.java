@@ -5,6 +5,9 @@
  */
 package atm_machine_transaction;
 import atm_machine_transaction.frmAtmMachine;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Heng-Sok
@@ -15,15 +18,34 @@ public class frmCheckBalance extends javax.swing.JFrame {
     /**
      * Creates new form frmCheckBalance
      */
-    public frmCheckBalance() {
+    public frmCheckBalance() throws FileNotFoundException {
         initComponents();
         accId = "1111";
         
+        ClsGetDataFile frmAllData = new ClsGetDataFile(accId);
+        frmAllData.getAllData();
+        System.out.print(frmAllData.getAccBalance());
         
+        txt_accId.setText(frmAllData.getAccId());
+        txt_accName.setText(frmAllData.getAccName());
+        txt_accNo.setText(frmAllData.getAccNo());
+        txt_accBalance.setText(frmAllData.getAccBalance() + "");
+        txt_accStatus.setText(frmAllData.getAccStatus());
     }
     
-    public frmCheckBalance (String accId) {
+    public frmCheckBalance (String accId) throws FileNotFoundException {
+        initComponents();
+        this.accId = accId;
         
+        ClsGetDataFile frmAllData = new ClsGetDataFile(accId);               
+        frmAllData.getAllData();
+        System.out.print(frmAllData.getAccBalance());
+        
+        txt_accId.setText(frmAllData.getAccId());
+        txt_accName.setText(frmAllData.getAccName());
+        txt_accNo.setText(frmAllData.getAccNo());
+        txt_accBalance.setText(frmAllData.getAccBalance() + "");
+        txt_accStatus.setText(frmAllData.getAccStatus());
     }
 
     /**
@@ -150,6 +172,7 @@ public class frmCheckBalance extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
@@ -157,6 +180,7 @@ public class frmCheckBalance extends javax.swing.JFrame {
         /// Button Back
         
         frmAtmMachine frmMain = new frmAtmMachine();
+        frmMain.moveToMain(accId);
         this.dispose();
     }//GEN-LAST:event_btn_backActionPerformed
 
@@ -190,7 +214,11 @@ public class frmCheckBalance extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmCheckBalance().setVisible(true);
+                try {
+                    new frmCheckBalance().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(frmCheckBalance.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

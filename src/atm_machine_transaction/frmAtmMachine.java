@@ -8,6 +8,9 @@ package atm_machine_transaction;
 import atm_machine_transaction.frmCashDesposit;
 import atm_machine_transaction.frmCashWithdrawal;
 import atm_machine_transaction.frmCashTransfer;
+import atm_machine_transaction.frmCheckBalance;
+import atm_machine_transaction.frmBillPayment;
+import atm_machine_transaction.frmChangePassword;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -37,10 +40,18 @@ public class frmAtmMachine extends javax.swing.JFrame {
      * Creates new form atm_machine
      */
     public frmAtmMachine() {
+//        initComponents();
+//
+//        txt_accountNo.setText("1575");
+//        userId = txt_accountNo.getText();
+//        getDataFromFile(userId);
+    }
+    
+    public frmAtmMachine(String userId) {
         initComponents();
 
-        txt_accountNo.setText("1111");
-        userId = txt_accountNo.getText();
+        txt_accountNo.setText(userId);
+        this.userId = userId;
         getDataFromFile(userId);
     }
 
@@ -64,8 +75,8 @@ public class frmAtmMachine extends javax.swing.JFrame {
     }
 
     /// Function Move to Main Form
-    public void moveToMain() {
-        frmAtmMachine frm = new frmAtmMachine();
+    public void moveToMain(String userId) {
+        frmAtmMachine frm = new frmAtmMachine(userId);
         frm.setVisible(true);
     }
 
@@ -81,7 +92,7 @@ public class frmAtmMachine extends javax.swing.JFrame {
     }
 
     /// Function Update Data in File using Line Number
-    public static void updateDataInFile(int lineNumber, String data) throws IOException {
+    public void updateDataInFile(int lineNumber, String data) throws IOException {
         Path path = Paths.get("src/atm_machine_transaction/data.txt");
         List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
         lines.set(lineNumber - 1, data);
@@ -104,9 +115,9 @@ public class frmAtmMachine extends javax.swing.JFrame {
         btn_cashWithdrawal = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         btn_cashTransfer = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        btn_checkBalance = new javax.swing.JButton();
+        btn_billPayment = new javax.swing.JButton();
+        btn_changePwd = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         txt_user = new javax.swing.JLabel();
@@ -125,7 +136,7 @@ public class frmAtmMachine extends javax.swing.JFrame {
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
-        btn_cashWithdrawal.setFont(new java.awt.Font("Hack", 1, 14)); // NOI18N
+        btn_cashWithdrawal.setFont(new java.awt.Font("Hack", 1, 13)); // NOI18N
         btn_cashWithdrawal.setText("Cash Withdrawal");
         btn_cashWithdrawal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +144,7 @@ public class frmAtmMachine extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setFont(new java.awt.Font("Hack", 1, 14)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Hack", 1, 13)); // NOI18N
         jButton6.setText("Cash Desposit");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +152,7 @@ public class frmAtmMachine extends javax.swing.JFrame {
             }
         });
 
-        btn_cashTransfer.setFont(new java.awt.Font("Hack", 1, 14)); // NOI18N
+        btn_cashTransfer.setFont(new java.awt.Font("Hack", 1, 13)); // NOI18N
         btn_cashTransfer.setText("Cash Transfer");
         btn_cashTransfer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,24 +160,29 @@ public class frmAtmMachine extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setFont(new java.awt.Font("Hack", 1, 14)); // NOI18N
-        jButton7.setText("Check Balance");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btn_checkBalance.setFont(new java.awt.Font("Hack", 1, 13)); // NOI18N
+        btn_checkBalance.setText("Check Balance");
+        btn_checkBalance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btn_checkBalanceActionPerformed(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Hack", 1, 14)); // NOI18N
-        jButton5.setText("Bill Payment");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btn_billPayment.setFont(new java.awt.Font("Hack", 1, 13)); // NOI18N
+        btn_billPayment.setText("Bill Payment");
+        btn_billPayment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btn_billPaymentActionPerformed(evt);
             }
         });
 
-        jButton9.setFont(new java.awt.Font("Hack", 1, 14)); // NOI18N
-        jButton9.setText("Change Password");
+        btn_changePwd.setFont(new java.awt.Font("Hack", 1, 13)); // NOI18N
+        btn_changePwd.setText("Change Password");
+        btn_changePwd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_changePwdActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -182,11 +198,11 @@ public class frmAtmMachine extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btn_cashTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_checkBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_billPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_changePwd, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -199,9 +215,9 @@ public class frmAtmMachine extends javax.swing.JFrame {
                     .addComponent(btn_cashTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_billPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_checkBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_changePwd, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(146, Short.MAX_VALUE))
         );
 
@@ -215,7 +231,7 @@ public class frmAtmMachine extends javax.swing.JFrame {
         jLabel3.setText("Account No");
 
         jLabel4.setFont(new java.awt.Font("Hack", 1, 18)); // NOI18N
-        jLabel4.setText("Balance");
+        jLabel4.setText("Cash");
 
         txt_accountNo.setFont(new java.awt.Font("Hack", 0, 15)); // NOI18N
         txt_accountNo.setText("####");
@@ -321,13 +337,28 @@ public class frmAtmMachine extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btn_checkBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_checkBalanceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        /// Button Check Balance
+        
+        frmCheckBalance frm;
+        try {
+            frm = new frmCheckBalance(userId);
+            frm.setVisible(true);
+            this.dispose();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(frmAtmMachine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_checkBalanceActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btn_billPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_billPaymentActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        /// Button Bill Payment
+        
+        frmBillPayment frm = new frmBillPayment(userId);
+        frm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_billPaymentActionPerformed
 
     private void btn_cashWithdrawalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cashWithdrawalActionPerformed
         // TODO add your handling code here:
@@ -351,6 +382,15 @@ public class frmAtmMachine extends javax.swing.JFrame {
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_cashTransferActionPerformed
+
+    private void btn_changePwdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_changePwdActionPerformed
+        // TODO add your handling code here:
+        /// Button Change Password
+        
+        frmChangePassword frm  = new frmChangePassword(userId);
+        frm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_changePwdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,13 +430,13 @@ public class frmAtmMachine extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
+    private javax.swing.JButton btn_billPayment;
     private javax.swing.JButton btn_cashTransfer;
     private javax.swing.JButton btn_cashWithdrawal;
+    private javax.swing.JButton btn_changePwd;
+    private javax.swing.JButton btn_checkBalance;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -19,8 +19,8 @@ public class Final_Project_GUI {
     public static void main(String[] args) {
         // TODO code application logic here
         /// Form Login
-//        frmLogin login = new frmLogin();
-//        login.setVisible(true);
+        frmLogin login = new frmLogin();
+        login.setVisible(true);
         
         /// Form Lucky Draw
 //        frmLuckyDraw luckDraw = new frmLuckyDraw();

@@ -51,8 +51,8 @@ public class frmCashWithdrawal extends javax.swing.JFrame {
     }
 
     /// Function Move to Main Form
-    public void moveToMain() {
-        frmAtmMachine frm = new frmAtmMachine();
+    public void moveToMain(String accNo) {
+        frmAtmMachine frm = new frmAtmMachine(accNo);
         frm.setVisible(true);
         this.dispose();
     }
@@ -225,7 +225,7 @@ public class frmCashWithdrawal extends javax.swing.JFrame {
         // TODO add your handling code here:
         /// Button Back
 
-        moveToMain();
+        moveToMain(accNo);
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_submitActionPerformed
@@ -298,7 +298,7 @@ public class frmCashWithdrawal extends javax.swing.JFrame {
         inp_withdrawal.setText("");
         
         /// Move to Main Form
-        moveToMain();
+        moveToMain(accNo);
         
         System.err.print("Successfully");
     }//GEN-LAST:event_btn_submitActionPerformed

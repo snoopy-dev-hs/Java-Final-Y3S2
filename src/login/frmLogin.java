@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import lucky_draw.frmLuckyDraw;
+import atm_machine_transaction.frmAtmMachine;
 
 /**
  *
@@ -154,12 +155,12 @@ public class frmLogin extends javax.swing.JFrame {
                     
                     canLogin = true;
                     
-                    /// Show Lucky Draw Form
-                    frmLuckyDraw luckyDraw = new frmLuckyDraw();
-                    luckyDraw.setVisible(true);
+                    /// Show ATM Form
+                    frmAtmMachine frm = new frmAtmMachine(sData[2]);
+                    System.out.print(sData[2]);
+                    frm.setVisible(true);
                     
                     /// Hide and Kill Login Form
-                    this.setVisible(false);
                     this.dispose();
                 }
 

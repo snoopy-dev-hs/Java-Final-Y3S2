@@ -30,7 +30,7 @@ import java.util.List;
 public class frmCashDesposit extends javax.swing.JFrame {
 
     /// Get AccountID
-    String accountId;
+    String accountId = "";
 
     /// Get File to Read
     File dataFile = new File("src/atm_machine_transaction/data.txt");
@@ -43,10 +43,17 @@ public class frmCashDesposit extends javax.swing.JFrame {
      */
     public frmCashDesposit() {
         initComponents();
+        
+//        txt_accountNo.setText(userId);
+//        accountId = txt_accountNo.getText();
+//        getDataFromFile(userId);
+    }
+    
+    public frmCashDesposit(String userId) {
         initComponents();
         
         txt_accountNo.setText(userId);
-        accountId = txt_accountNo.getText();
+        this.accountId = userId;
         getDataFromFile(userId);
     }
 
@@ -70,14 +77,6 @@ public class frmCashDesposit extends javax.swing.JFrame {
         List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
         lines.set(lineNumber - 1, data);
         Files.write(path, lines, StandardCharsets.UTF_8);
-    }
-
-    public frmCashDesposit(String userId) {
-        initComponents();
-        
-        txt_accountNo.setText(userId);
-        accountId = txt_accountNo.getText();
-        getDataFromFile(userId);
     }
 
     public void getDataFromFile(String userId) {
@@ -309,7 +308,7 @@ public class frmCashDesposit extends javax.swing.JFrame {
         inp_deposits.setText("");
         
         /// Move to Main Form
-        frmAtmMachine frm = new frmAtmMachine();
+        frmAtmMachine frm = new frmAtmMachine(accountId);
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_depositActionPerformed
@@ -318,7 +317,7 @@ public class frmCashDesposit extends javax.swing.JFrame {
         // TODO add your handling code here:
         /// Button Back
 
-        frmAtmMachine frm = new frmAtmMachine();
+        frmAtmMachine frm = new frmAtmMachine(accountId);
         frm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_backActionPerformed

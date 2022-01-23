@@ -32,14 +32,13 @@ public class frmLuckyDraw extends javax.swing.JFrame {
     /// For Num of Winner
     int numOfWinner;
 
-
     /**
      * Creates new form frmLuckDraw
      */
     public frmLuckyDraw() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
         /// Remove All List Tel of Winner
         listOfTel.clear();
 
@@ -67,11 +66,11 @@ public class frmLuckyDraw extends javax.swing.JFrame {
                 String[] spData = data.split("@@", 4);
 
 //                if (!fWinner.equals(spData[1]) && !sWinner.equals(spData[1]) && !tWinner.equals(spData[1])) {
-                    DefaultTableModel model = (DefaultTableModel) tbl_cus.getModel();
-                    model.addRow(new Object[]{indexOfLoop, spData[1], spData[2]});
+                DefaultTableModel model = (DefaultTableModel) tbl_cus.getModel();
+                model.addRow(new Object[]{indexOfLoop, spData[1], spData[2]});
 
-                    /// Increase IndexOfLoop
-                    indexOfLoop += 1;
+                /// Increase IndexOfLoop
+                indexOfLoop += 1;
 //                }
             }
 
@@ -353,7 +352,7 @@ public class frmLuckyDraw extends javax.swing.JFrame {
 
         int random = (int) (Math.random() * listOfTel.size());
         winnerTel = (String) listOfTel.get(random);
-        
+
         /// Set Winner Tel
         txt_winnerTel.setText(winnerTel);
 
@@ -364,7 +363,7 @@ public class frmLuckyDraw extends javax.swing.JFrame {
         btn_start.setEnabled(true);
         btn_stop.setEnabled(false);
         btn_reset.setEnabled(true);
-        
+
         /// Get All Winner Tel
         String fWinner = winnerTel;
         String sWinner = txt_winner1tel.getText();
@@ -376,16 +375,16 @@ public class frmLuckyDraw extends javax.swing.JFrame {
 
             /// Get Index Of Loop
             int indexOfLoop = 1;
-            
+
             /// Clear JTable Data
             DefaultTableModel model = (DefaultTableModel) tbl_cus.getModel();
             model.setRowCount(0);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
-                
+
                 /// Split Data
                 String[] spData = data.split("@@", 4);
-                
+
                 /// Get Winner Name
                 if (spData[1].equals(winnerTel)) {
                     winnerName = spData[2];
@@ -394,7 +393,7 @@ public class frmLuckyDraw extends javax.swing.JFrame {
                 /// Check Data Then Send To JTable
                 if (!fWinner.equals(spData[1]) && !sWinner.equals(spData[1]) && !tWinner.equals(spData[1])) {
                     model.addRow(new Object[]{indexOfLoop, spData[1], spData[2]});
-                    
+
                     /// Increase IndexOfLoop
                     indexOfLoop += 1;
                 }
@@ -407,29 +406,23 @@ public class frmLuckyDraw extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             java.util.logging.Logger.getLogger(frmLuckyDraw.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         /// Send Result to TextFeild
-        switch (numOfWinner) {
-            case 1 -> {
-                txt_winnerFName.setText(winnerName);
-                txt_winner1tel.setText(winnerTel);
-            }
-            case 2 -> {
-                txt_winnerSName.setText(winnerName);
-                txt_winner2tel.setText(winnerTel);
-            }
-            case 3 -> {
-                txt_winnerTName.setText(winnerName);
-                txt_winner3tel.setText(winnerTel);
-                btn_start.setEnabled(false);
-            }
-            default -> {
-            }
+        if (numOfWinner == 1) {
+            txt_winnerFName.setText(winnerName);
+            txt_winner1tel.setText(winnerTel);
+        } else if (numOfWinner == 2) {
+            txt_winnerSName.setText(winnerName);
+            txt_winner2tel.setText(winnerTel);
+        } else if (numOfWinner == 3) {
+            txt_winnerTName.setText(winnerName);
+            txt_winner3tel.setText(winnerTel);
+            btn_start.setEnabled(false);
         }
-        
+
         /// Set Num of Win
         txt_numOfWin.setText(numOfWinner + "");
-        
+
         /// Increase Num of Winner
         numOfWinner += 1;
     }//GEN-LAST:event_btn_stopActionPerformed
